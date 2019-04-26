@@ -1,7 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component, Suspense } from 'react'
 
 // Packages
 import axios from '../../../_api/axios-omdbapi-data'
+import { Route } from 'react-router-dom'
+
+// Components
+import Spinner from '../../../_ui/Spinner/Spinner'
+
+// Lazy
+const MoviePoster = React.lazy(() => import('../MoviePoster/MoviePoster'))
 
 export default class MovieDetails extends Component {
     state = {
@@ -27,7 +34,12 @@ export default class MovieDetails extends Component {
         return (
             <article className={`row`}>
                 <div className={`col-sm-4`}>
-                    <img src={details.Poster} alt={details.Title} />
+                    <Route path="/movie/:id" render={() => (
+                        <Suspense fallback={<Spinner />}>
+                            <MoviePoster image={details.Poster} alt={details.Title} />
+                        </Suspense>
+                    )} />
+
                     <ul className={`list-unstyled mt-2`}>
                         <li>
                             <label><strong>Actors:</strong> {details.Actors}</label>

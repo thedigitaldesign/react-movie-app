@@ -48,7 +48,7 @@ export default class Movies extends Component {
 
     render() {
         let movies = this.state.movies.map(data => {
-            return <MovieCard {...this.props} key={data.Id} image={data.Poster} alt={data.Title} imdbId={data.Id} />
+            return <MovieCard key={data.Id} image={data.Poster} alt={data.Title} imdbId={data.Id} />
         })
 
         return (
