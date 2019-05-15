@@ -10,7 +10,7 @@ export default (state = initialState, { type, payload }) => {
         case dMovieDetails.MOVIE_DETAILS:
             return { 
                 ...state, 
-                ...payload 
+                details: payload.details
             }
 
         default:

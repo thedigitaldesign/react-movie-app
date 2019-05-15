@@ -23,9 +23,6 @@ export default (state = initialState, { type, payload }) => {
                 ...payload 
             }
         case dMovies.MOVIES_LIST:
-            console.log('[Reducer:Movies] state: ', state)
-            console.log('[Reducer:Movies] payload: ', payload)
-            
             return { 
                 ...state,
                 movies: state.movies.concat({

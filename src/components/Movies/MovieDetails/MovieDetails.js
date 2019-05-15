@@ -1,23 +1,26 @@
 import React, { Component, Suspense } from 'react'
 
 // Packages
-import axios from '../../../utils/API/axios-omdbapi-data'
 import { Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+// Util
+import axios from '../../../utils/API/axios-omdbapi-data'
 
 // Components
 import Spinner from '../../../structure/UI/Spinner/Spinner'
 
+// Consts
+import { dMovieDetails } from '../../../redux/dispatch'
+
 // Lazy
 const MoviePoster = React.lazy(() => import('../MoviePoster/MoviePoster'))
 
-export default class MovieDetails extends Component {
+class MovieDetails extends Component {
     componentDidMount() {
         axios.get('', { params: { i: this.props.match.params.id, plot: 'full' } })
             .then(response => {
-                console.log(response)
-                this.setState({
-                    details: response.data
-                })
+                this.props.AddMovieDetails(response.data)
             })
             .catch(error => {
 
@@ -25,7 +28,7 @@ export default class MovieDetails extends Component {
     }
 
     render() {
-        const details = this.state.details;
+        const details = this.props.details;
 
         return (
             <article className={`row`}>
@@ -80,3 +83,21 @@ export default class MovieDetails extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        details: state.MovieDetails.details
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        AddMovieDetails: (details) => dispatch({
+            type: dMovieDetails.MOVIE_DETAILS,
+            payload: {
+                details
+            }
+        })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails)
