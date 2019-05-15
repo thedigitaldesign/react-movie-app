@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 // Global
-import AppRoutes from '../../_routes/_routes'
+import AppRoutes from '../../utils/Routes/Routes'
 
 // Components
 // import Movies from '../Movies/Movies'

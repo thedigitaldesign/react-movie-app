@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-// Global
-import AppRoutes from './_routes/_routes'
+// Utils
+import AppRoutes from './utils/Routes/Routes'
 
 // Packages
 import { BrowserRouter, Route } from 'react-router-dom'
 
 // Components
-import Layout from './_layout/_Layout'
+import Layout from './structure/Layout/Layout'
 import MovieApp from './components/MovieApp/MovieApp'
 
 export default class App extends Component {

@@ -1,28 +1,20 @@
 import React, { Component, Suspense } from 'react'
 
 // Packages
-import axios from '../../_api/axios-omdbapi-data'
+import { connect } from 'react-redux'
+
+// Utils
+import axios from '../../utils/API/axios-omdbapi-data'
 
 // Components
 import MovieCard from './MovieCard/MovieCard'
 
-export default class Movies extends Component {
-    state = {
-        IMDb: [
-            { id: 'tt2911666' },
-            { id: 'tt4425200' },
-            { id: 'tt6146586' },
-            { id: 'tt0133093' },
-            { id: 'tt0086190' },
-            { id: 'tt1104001' },
-            { id: 'tt0217869' },
-            { id: 'tt0093779' }
-        ],
-        movies: []
-    }
+// Consts
+import { dMovies } from '../../redux/dispatch'
 
+class Movies extends Component {
     componentDidMount() {
-        this.state.IMDb.map((data) => {
+        this.props.IMDb.map((data) => {
             return this.getMovies(data.id)
         })
     }
@@ -30,13 +22,11 @@ export default class Movies extends Component {
     getMovies = (id) => {
         axios.get('', { params: { i: id, plot: 'full' } })
             .then(response => {
-                this.setState({
-                    movies: this.state.movies.concat({
-                        Id: response.data.imdbID,
-                        Title: response.data.Title,
-                        Poster: response.data.Poster
-                    })
-                })
+                this.props.AddMovies(
+                    response.data.imdbID,
+                    response.data.Title,
+                    response.data.Poster
+                )
             })
             .catch(error => {
 
@@ -47,7 +37,7 @@ export default class Movies extends Component {
     }
 
     render() {
-        let movies = this.state.movies.map(data => {
+        let movies = this.props.movies.map(data => {
             return <MovieCard key={data.Id} image={data.Poster} alt={data.Title} imdbId={data.Id} />
         })
 
@@ -61,3 +51,25 @@ export default class Movies extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        IMDb: state.Movies.IMDb,
+        movies: state.Movies.movies
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        AddMovies: (id, title, poster) => dispatch ({
+            type: dMovies.MOVIES_LIST,
+            payload: {
+                id,
+                title,
+                poster
+            }
+        })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movies)

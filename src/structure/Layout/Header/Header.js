@@ -1,7 +1,7 @@
 import React, {  } from 'react'
 
-// Components
-import Logo from '../../_ui/Logo/Logo'
+// UI
+import Logo from '../../UI/Logo/Logo'
 import Navigation from './Navigation/Navigation'
 
 // CSS

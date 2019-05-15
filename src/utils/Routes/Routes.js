@@ -4,12 +4,12 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 // Components
-import Home from '../components/Home/Home'
-import Movies from '../components/Movies/Movies'
-import MovieDetails from '../components/Movies/MovieDetails/MovieDetails'
-import Actors from '../components/Actors/Actors'
+import Home from '../../components/Home/Home'
+import Movies from '../../components/Movies/Movies'
+import MovieDetails from '../../components/Movies/MovieDetails/MovieDetails'
+import Actors from '../../components/Actors/Actors'
 
-const _routes = () => {
+const Routes = () => {
     return (
         <>
             <Route path="/" exact component={Home} />
@@ -22,5 +22,5 @@ const _routes = () => {
     )
 }
 
-export default _routes
+export default Routes
 

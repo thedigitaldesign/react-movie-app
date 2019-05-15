@@ -4,7 +4,7 @@ import React, {  } from 'react'
 import { Link } from 'react-router-dom'
 
 // Assets
-import MovieLogo from '../../assets/images/movie-logo-white.png'
+import MovieLogo from '../../../assets/images/movie-logo-white.png'
 
 // CSS
 import css from './Logo.module.scss'

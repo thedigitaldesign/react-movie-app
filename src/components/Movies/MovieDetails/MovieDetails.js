@@ -1,26 +1,22 @@
 import React, { Component, Suspense } from 'react'
 
 // Packages
-import axios from '../../../_api/axios-omdbapi-data'
+import axios from '../../../utils/API/axios-omdbapi-data'
 import { Route } from 'react-router-dom'
 
 // Components
-import Spinner from '../../../_ui/Spinner/Spinner'
+import Spinner from '../../../structure/UI/Spinner/Spinner'
 
 // Lazy
 const MoviePoster = React.lazy(() => import('../MoviePoster/MoviePoster'))
 
 export default class MovieDetails extends Component {
-    state = {
-        movieDetails: {}
-    }
-
     componentDidMount() {
         axios.get('', { params: { i: this.props.match.params.id, plot: 'full' } })
             .then(response => {
                 console.log(response)
                 this.setState({
-                    movieDetails: response.data
+                    details: response.data
                 })
             })
             .catch(error => {
@@ -29,7 +25,7 @@ export default class MovieDetails extends Component {
     }
 
     render() {
-        const details = this.state.movieDetails;
+        const details = this.state.details;
 
         return (
             <article className={`row`}>
