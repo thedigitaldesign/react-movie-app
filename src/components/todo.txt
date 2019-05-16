@@ -1,0 +1,13 @@
+- Additional features
+    - Map
+        - /components
+            - State and stateless
+    - Plan
+        - Home - Delete?
+        - Actors - Delete?
+        - Star Ratings and Reviews
+            - Written reviews of the movie
+            - Allow for star/popcorn/whatever rating of the movie
+        - Comments and Social Features
+            - Maybe let the user upload pictures of them at the movie
+

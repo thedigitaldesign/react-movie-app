@@ -1,0 +1,10 @@
+- Integrate GraphQL into this simple app
+    - Wrapper - Note: This should probably be pulled out and made a standalone service
+        - Build schema to support OMDb API (https://www.omdbapi.com/)
+        - Build structure to support schema
+    - Star Ratings and Reviews
+        - Written reviews of the movie
+        - Allow for star/popcorn/whatever rating of the movie
+    - Comments and Social Features
+        - Maybe let the user upload pictures of them at the movie
+
