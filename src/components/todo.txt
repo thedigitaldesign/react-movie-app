@@ -5,6 +5,7 @@
     - Plan
         - Home - Delete?
         - Actors - Delete?
+        - A way for users to add/search movies
         - Star Ratings and Reviews
             - Written reviews of the movie
             - Allow for star/popcorn/whatever rating of the movie
